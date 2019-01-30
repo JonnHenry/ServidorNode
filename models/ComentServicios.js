@@ -1,4 +1,4 @@
-module.exports = (conexion, Sequelize) => {
+module.exports.ComentServicios = (conexion, Sequelize) => {
     const ComentServicios = conexion.define('ComentServicios', 
     {
         idPersona: 
@@ -34,7 +34,6 @@ module.exports = (conexion, Sequelize) => {
         calificacion: {
             type: Sequelize.INTEGER
         }
-
     },
     {
         timestamps: true

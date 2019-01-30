@@ -1,4 +1,4 @@
-module.exports = (conexion, Sequelize) => {
+module.exports.Comentarios = (conexion, Sequelize) => {
     const Comentarios = conexion.define('Comentarios', 
     {
         idComentario: 
