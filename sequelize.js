@@ -4,6 +4,7 @@ var conexion = new Sequelize('fastservices','root','12345678',{
 });
 
 
+
 conexion.sync().then(()=>{
     console.log('Tablas Creadas exitosamente!')
 });
