@@ -1,4 +1,4 @@
-module.exports.Servicios = (conexion, Sequelize) => {
+module.exports = (conexion, Sequelize) => {
     const Servicios = conexion.define('Servicios', 
     {
         idServicio: 

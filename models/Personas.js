@@ -1,4 +1,4 @@
-module.exports.Personas = (conexion, Sequelize) => {
+module.exports = (conexion, Sequelize) => {
     const Personas = conexion.define('Personas', {
         idPersona: {
             type: Sequelize.INTEGER,

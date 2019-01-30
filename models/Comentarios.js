@@ -1,4 +1,4 @@
-module.exports.Comentarios = (conexion, Sequelize) => {
+module.exports = (conexion, Sequelize) => {
     const Comentarios = conexion.define('Comentarios', 
     {
         idComentario: 
@@ -16,6 +16,6 @@ module.exports.Comentarios = (conexion, Sequelize) => {
     },
     {
         timestamps: false
-    })
+    });
     return Comentarios
   }

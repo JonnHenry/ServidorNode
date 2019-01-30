@@ -3,6 +3,7 @@ var conexion = new Sequelize('fastservices','root','12345678',{
     dialect: 'mysql',
 });
 
+var Personas=
 
 
 conexion.sync().then(()=>{
