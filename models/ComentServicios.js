@@ -26,12 +26,10 @@ module.exports = (conexion, Sequelize) => {
             type: Sequelize.INTEGER,
             references: 
             {
-                model: Comentarios,
-                key: idComentario,
-                as: idComentario
-            },
-            onDelete: 'CASCADE',
-            onUpdate: 'CASCADE'
+                model: 'Comentarios',
+                key: 'idComentario',
+                as: 'idComentario'
+            }
         },
         calificacion: {
             type: Sequelize.INTEGER

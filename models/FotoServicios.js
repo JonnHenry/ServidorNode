@@ -18,7 +18,7 @@ module.exports = (conexion, Sequelize) => {
             {
                 model: 'Servicios',
                 key: 'idServicio',
-                as: 'idServOfrece'
+                as: 'idServicio'
             }
         },
         direccionFoto: {

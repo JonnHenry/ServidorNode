@@ -1,14 +1,14 @@
 module.exports = (conexion, Sequelize) => {
     const ServicioOfrece = conexion.define('ServiciosOfrece', 
     {
-        idPersonas: 
+        idPersona: 
         {
             type: Sequelize.INTEGER,
             references: 
             {
                 model: 'Personas',
                 key: 'idPersona',
-                as: 'idPersOfrece'
+                as: 'idPersona'
             }
         },
         idServOfrece: 
