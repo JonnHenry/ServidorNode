@@ -1,0 +1,15 @@
+{
+  "name": "servidornode",
+  "version": "1.0.0",
+  "description": "Servidor de Nodejs para manejar la pagina FastServices",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Fast",
+    "Services"
+  ],
+  "author": "Jonnathan Campoberde",
+  "license": "ISC"
+}
