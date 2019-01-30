@@ -9,7 +9,9 @@ module.exports.FotoServicios = (conexion, Sequelize) => {
                 model: Personas,
                 key: idPersona,
                 as: idPersona
-            }
+            },
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
         },
         idServicio: 
         {
@@ -19,7 +21,9 @@ module.exports.FotoServicios = (conexion, Sequelize) => {
                 model: Servicios,
                 key: idServicio,
                 as: idServOfrece
-            }
+            },
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
         },
         direccionFoto: {
             type: Sequelize.STRING

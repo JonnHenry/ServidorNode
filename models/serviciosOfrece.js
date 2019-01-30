@@ -9,7 +9,9 @@ module.exports.ServiciosOfrece = (conexion, Sequelize) => {
                 model: Personas,
                 key: idPersona,
                 as: idPersOfrece
-            }
+            },
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
         },
         idServOfrece: 
         {
@@ -19,7 +21,9 @@ module.exports.ServiciosOfrece = (conexion, Sequelize) => {
                 model: Servicios,
                 key: idServicio,
                 as: idServOfrece
-            }
+            },
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
         },
         calificacionGeneral: {//Mostrar la calificaion promedio en enteros del usuario
             type: Sequelize.INTEGER

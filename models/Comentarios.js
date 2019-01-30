@@ -5,7 +5,9 @@ module.exports.Comentarios = (conexion, Sequelize) => {
         {
             type: Sequelize.INTEGER,
             primaryKey : true,
-            autoIncrement:true
+            autoIncrement:true,
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
         },
         comentDescr: 
         {

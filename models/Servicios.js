@@ -5,7 +5,9 @@ module.exports.Servicios = (conexion, Sequelize) => {
         {
             type: Sequelize.INTEGER,
             primaryKey : true,
-            autoIncrement:true
+            autoIncrement:true,
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
         },
         DescripcionServicio: 
         {
