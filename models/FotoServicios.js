@@ -6,24 +6,20 @@ module.exports = (conexion, Sequelize) => {
             type: Sequelize.INTEGER,
             references: 
             {
-                model: Personas,
-                key: idPersona,
-                as: idPersona
-            },
-            onDelete: 'CASCADE',
-            onUpdate: 'CASCADE'
+                model: 'Personas',
+                key: 'idPersona',
+                as: 'idPersona'
+            }
         },
         idServicio: 
         {
             type: Sequelize.INTEGER,
             references: 
             {
-                model: Servicios,
-                key: idServicio,
-                as: idServOfrece
-            },
-            onDelete: 'CASCADE',
-            onUpdate: 'CASCADE'
+                model: 'Servicios',
+                key: 'idServicio',
+                as: 'idServOfrece'
+            }
         },
         direccionFoto: {
             type: Sequelize.STRING

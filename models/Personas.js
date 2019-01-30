@@ -4,6 +4,7 @@ module.exports = (conexion, Sequelize) => {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true,
+            unique: true,
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE'
         },
