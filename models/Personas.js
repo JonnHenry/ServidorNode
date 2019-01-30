@@ -5,6 +5,7 @@ module.exports = (conexion, Sequelize) => {
             primaryKey: true,
             autoIncrement: true,
             unique: true,
+            allowNull: false,
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE'
         },

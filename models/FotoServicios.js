@@ -4,6 +4,8 @@ module.exports = (conexion, Sequelize) => {
         idPersona: 
         {
             type: Sequelize.INTEGER,
+            allowNull: false,
+            primaryKey: true,
             references: 
             {
                 model: 'Personas',
@@ -14,6 +16,7 @@ module.exports = (conexion, Sequelize) => {
         idServicio: 
         {
             type: Sequelize.INTEGER,
+            allowNull: false,
             references: 
             {
                 model: 'Servicios',

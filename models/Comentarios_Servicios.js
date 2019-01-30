@@ -1,9 +1,11 @@
 module.exports = (conexion, Sequelize) => {
-    const ComentServicios = conexion.define('ComentServicios', 
+    const Comentarios_Servicios = conexion.define('Comentarios_Servicios', 
     {
         idPersona: 
         {
             type: Sequelize.INTEGER,
+            allowNull: false,
+            primaryKey: true,
             references: 
             {
                 model: 'Personas',
@@ -14,6 +16,7 @@ module.exports = (conexion, Sequelize) => {
         idServicio: 
         {
             type: Sequelize.INTEGER,
+            allowNull: false,
             references: 
             {
                 model: 'Servicios',
@@ -24,6 +27,7 @@ module.exports = (conexion, Sequelize) => {
         idComentario: 
         {
             type: Sequelize.INTEGER,
+            allowNull: false,
             references: 
             {
                 model: 'Comentarios',
@@ -32,11 +36,12 @@ module.exports = (conexion, Sequelize) => {
             }
         },
         calificacion: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            allowNull: false
         }
     },
     {
         timestamps: true
     })
-    return ComentServicios
+    return Comentarios_Servicios
   }
