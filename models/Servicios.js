@@ -11,7 +11,7 @@ module.exports = (conexion, Sequelize) => {
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE'
         },
-        DescripcionServicio: 
+        descripcionServicio: 
         {
             type: Sequelize.STRING
         }
