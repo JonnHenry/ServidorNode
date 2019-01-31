@@ -10,12 +10,12 @@ var conexion = new Sequelize('fastservices','root','12345678',{
     dialect: 'mysql'
 });
 
-const Personas = PersonasModel(conexion,Sequelize);
-const Comentarios = ComentariosModel(conexion,Sequelize);
-const Servicios = ServiciosModel(conexion,Sequelize);
-const Comentarios_Servicios = Comentarios_ServiciosModel(conexion,Sequelize);
-const FotoServicios = FotoServiciosModel(conexion,Sequelize);
-const Servicios_Persona = Servicios_PersonaModel(conexion,Sequelize);
+var Personas = PersonasModel(conexion,Sequelize);
+var Comentarios = ComentariosModel(conexion,Sequelize);
+var Servicios = ServiciosModel(conexion,Sequelize);
+var Comentarios_Servicios = Comentarios_ServiciosModel(conexion,Sequelize);
+var FotoServicios = FotoServiciosModel(conexion,Sequelize);
+var Servicios_Persona = Servicios_PersonaModel(conexion,Sequelize);
 
 conexion.sync({force: true}).then(()=>{
     console.log('Tablas Creadas exitosamente!')

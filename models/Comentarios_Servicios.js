@@ -17,6 +17,7 @@ module.exports = (conexion, Sequelize) => {
         {
             type: Sequelize.INTEGER,
             allowNull: false,
+            primaryKey: true,
             references: 
             {
                 model: 'Servicios',
@@ -28,6 +29,7 @@ module.exports = (conexion, Sequelize) => {
         {
             type: Sequelize.INTEGER,
             allowNull: false,
+            primaryKey: true,
             references: 
             {
                 model: 'Comentarios',
