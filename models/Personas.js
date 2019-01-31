@@ -21,6 +21,9 @@ module.exports = (conexion, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false
         },
+        clave: {
+            type: Sequelize.STRING,
+        },
         latitud: {
             type: Sequelize.STRING,
         },

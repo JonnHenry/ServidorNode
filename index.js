@@ -29,21 +29,31 @@ app.get('/personas', (req, res) => {
     })
 })
 
-app.get('/personas/:correo', (req, res) => {
-  let correoUser = req.params.correo
+app.get('/personas/correo/:correouser', (req, res) => {
+  let correoUser = req.params.correouser
   Personas.findOne({ where: {correo: correoUser} })
     .then(persona => {
       res.json(persona)
     })
 })
 
-app.get('/personas/:correo', (req, res) => {
-  let correoUser = req.params.correo
-  Personas.findOne({ where: {correo: correoUser} })
+app.get('/personas/ciudad/:nombciudad', (req, res) => {
+  let ciudadUser = req.params.nombciudad
+  Personas.findOne({ where: {ciudad: ciudadUser} })
     .then(persona => {
       res.json(persona)
     })
 })
+
+app.get('/personas/provincia/:nombprov', (req, res) => {
+  let ciudadUser = req.params.nombprov
+  Personas.findOne({ where: {ciudad: ciudadUser} })
+    .then(persona => {
+      res.json(persona)
+    })
+})
+
+
 
 
 
