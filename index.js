@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(cors());
 var port = 3000;
 
-
+//Objetos de las instancias de las bases de datos
 const Personas = modulo.Personas;
 const Servicios = modulo.Servicios;
 const Comentarios = modulo.Comentarios;
