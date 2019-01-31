@@ -16,7 +16,26 @@ const Servicios_Personas = modulo.Servicios_Personas;
 const FotoServicios = modulo.FotoServicios;
 const Comentarios_Servicios = modulo.Comentarios_Servicios;
 
+app.get('/servicios', (req, res) => {
+  Servicios.findAll()
+    .then(servicios => {
+      res.json(servicios)    
+    })
+})
 
+app.get('/personas', (req, res) => {
+  Personas.findAll().then(personas => {
+      res.json(personas)    
+    })
+})
+
+app.get('/personas/:correo', (req, res) => {
+  let personaId = req.params.id
+  Persona.findOne({ where: {id: personaId} })
+    .then(persona => {
+      res.json(persona)
+    })
+})
 
 
 
