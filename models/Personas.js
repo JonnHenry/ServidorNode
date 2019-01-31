@@ -23,20 +23,16 @@ module.exports = (conexion, Sequelize) => {
         },
         latitud: {
             type: Sequelize.STRING,
-            allowNull: false
         },
         longitud: {
 
             type: Sequelize.STRING,
-            allowNull: false
         },
         provincia: {
             type: Sequelize.STRING,
-            allowNull: false
         },
         ciudad: {
             type: Sequelize.STRING,
-            allowNull: false
         }
     }, {
         timestamps: false

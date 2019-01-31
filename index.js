@@ -30,8 +30,16 @@ app.get('/personas', (req, res) => {
 })
 
 app.get('/personas/:correo', (req, res) => {
-  let personaId = req.params.id
-  Persona.findOne({ where: {id: personaId} })
+  let correoUser = req.params.correo
+  Personas.findOne({ where: {correo: correoUser} })
+    .then(persona => {
+      res.json(persona)
+    })
+})
+
+app.get('/personas/:correo', (req, res) => {
+  let correoUser = req.params.correo
+  Personas.findOne({ where: {correo: correoUser} })
     .then(persona => {
       res.json(persona)
     })
