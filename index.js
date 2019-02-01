@@ -86,12 +86,22 @@ app.post('/personas/nuevo', (req, res) => {
 app.post('/servicio/nuevo', (req, res) => {
   console.log(req.body)
   Servicios.create({
-   descripcionServicio: req.body.descripcionServicio
+    descripcionServicio: req.body.descripcionServicio
   }).then(persona => {
     res.send('Servicio creado')
   })
 })
 
+app.post('/fotoservicio/nuevo', (req, res) => {//La direccion de las fotos van separadas por un punto y coma al ingresar 
+  console.log(req.body)
+  FotoServicios.create({
+    idPersona: req.body.idPersona,
+    idServicio: req.body.idServicio,
+    direccionFoto: req.body.direccionFoto
+  }).then(persona => {
+    res.send('Servicio creado')
+  })
+})
 
 
 app.listen(port, () => {
