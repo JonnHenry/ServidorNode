@@ -17,7 +17,7 @@ var Comentarios_Servicios = Comentarios_ServiciosModel(conexion,Sequelize);
 var FotoServicios = FotoServiciosModel(conexion,Sequelize);
 var Servicios_Persona = Servicios_PersonaModel(conexion,Sequelize);
 
-conexion.sync({force: true}).then(()=>{
+conexion.sync().then(()=>{
     console.log('Tablas Creadas exitosamente!')
 });
 

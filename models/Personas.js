@@ -19,11 +19,7 @@ module.exports = (conexion, Sequelize) => {
         clave: {
             type: Sequelize.STRING,
         },
-        latitud: {
-            type: Sequelize.STRING,
-        },
-        longitud: {
-
+        urlFoto: {
             type: Sequelize.STRING,
         },
         provincia: {
