@@ -1,23 +1,18 @@
 module.exports = (conexion, Sequelize) => {
     const Personas = conexion.define('Personas', {
-        idPersona: {
-            type: Sequelize.INTEGER,
+        correo: {
+            type: Sequelize.STRING,
             primaryKey: true,
-            autoIncrement: true,
             unique: true,
             allowNull: false,
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE'
-        },
+        },        
         nombre: {
             type: Sequelize.STRING,
             allowNull: false
         },
         apellido: {
-            type: Sequelize.STRING,
-            allowNull: false
-        },
-        correo: {
             type: Sequelize.STRING,
             allowNull: false
         },

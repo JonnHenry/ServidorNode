@@ -3,13 +3,13 @@ module.exports = (conexion, Sequelize) => {
     {
         idPersona: 
         {
-            type: Sequelize.INTEGER,
+            type: Sequelize.STRING,
             allowNull: false,
             primaryKey: true,
             references: 
             {
                 model: 'Personas',
-                key: 'idPersona',
+                key: 'correo',
                 as: 'idPersona'
             }
         },
