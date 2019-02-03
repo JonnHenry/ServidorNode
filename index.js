@@ -66,7 +66,18 @@ app.get('/personas/provincia/:nombprov', (req, res) => {
     })
 })
 
-///login/
+app.put('/personas/:id', (req, res) => {
+  console.log(req.body)
+  let correoPersona = req.params.id
+  let nuevosDatos = req.body
+  Personas.findOne({ where: { correo: correoPersona } })
+    .then(persona => {
+      persona.update(nuevosDatos)
+        .then(nuevaPersona => {
+          res.json(nuevaPersona);
+        })
+    })
+})
 
 app.post('/login/persona', (req, res) => {
   console.log('Los datos que llegan son:'+ req.body)
@@ -80,7 +91,6 @@ app.post('/login/persona', (req, res) => {
        } 
     })
     .then(persona => {
-      console.log(persona)
       res.json(persona);
     })
 })
