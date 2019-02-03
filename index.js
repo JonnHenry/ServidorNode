@@ -66,6 +66,30 @@ app.get('/personas/provincia/:nombprov', (req, res) => {
     })
 })
 
+///login/
+
+app.post('/login/persona', (req, res) => {
+  console.log('Los datos que llegan son:')
+  Personas.findOne({
+      where: {
+        correo: req.body.correo,
+        clave: req.body.clave
+      }
+    })
+    .then(persona => {
+      const personaResp={
+        "correo" : persona.correo,
+        "nombre" : persona.nombre,
+        "apellido" : persona.apellido,
+        "urlFoto" : persona.urlFoto,
+        "provincia" : persona.provincia,
+        "ciudad" : persona.ciudad
+      }
+
+      res.json(JSON.stringify(personaResp));
+    })
+})
+
 app.post('/personas/nuevo', (req, res) => {
   Personas.findOrCreate({
       where: {
@@ -74,7 +98,8 @@ app.post('/personas/nuevo', (req, res) => {
         correo: req.body.correo,
         clave: req.body.clave,
         provincia: req.body.provincia,
-        ciudad: req.body.ciudad
+        ciudad: req.body.ciudad,
+        urlFoto: req.body.urlFoto
       }
     })
     .spread(function (userResult, created) {
