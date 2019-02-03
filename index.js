@@ -69,22 +69,19 @@ app.get('/personas/provincia/:nombprov', (req, res) => {
 ///login/
 
 app.post('/login/persona', (req, res) => {
-  console.log('Los datos que llegan son:')
-  Personas.findOne({
+  console.log('Los datos que llegan son:'+ req.body)
+  Personas.find({
       where: {
         correo: req.body.correo,
         clave: req.body.clave
-      }
+      },
+      attributes: { 
+        exclude: ['clave'] // Para poder excluir el campo clave en la respuesta
+       } 
     })
     .then(persona => {
-      res.json({
-        correo : persona.correo,
-        nombre : persona.nombre,
-        apellido : persona.apellido,
-        urlFoto : persona.urlFoto,
-        provincia : persona.provincia,
-        ciudad : persona.ciudad
-      });
+      console.log(persona)
+      res.json(persona);
     })
 })
 
