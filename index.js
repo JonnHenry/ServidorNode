@@ -77,16 +77,14 @@ app.post('/login/persona', (req, res) => {
       }
     })
     .then(persona => {
-      const personaResp={
-        "correo" : persona.correo,
-        "nombre" : persona.nombre,
-        "apellido" : persona.apellido,
-        "urlFoto" : persona.urlFoto,
-        "provincia" : persona.provincia,
-        "ciudad" : persona.ciudad
-      }
-
-      res.json(JSON.stringify(personaResp));
+      res.json({
+        correo : persona.correo,
+        nombre : persona.nombre,
+        apellido : persona.apellido,
+        urlFoto : persona.urlFoto,
+        provincia : persona.provincia,
+        ciudad : persona.ciudad
+      });
     })
 })
 
@@ -123,7 +121,7 @@ app.post('/servicio/nuevo', (req, res) => {
   Servicios.create({
     descripcionServicio: req.body.descripcionServicio
   }).then(persona => {
-    res.send('Servicio creado')
+    res.json({ respuesta: 'Servicio creado' })
   })
 })
 
@@ -134,7 +132,7 @@ app.post('/fotoservicio/nuevo', (req, res) => { //La direccion de las fotos van 
     idServicio: req.body.idServicio,
     direccionFoto: req.body.direccionFoto
   }).then(persona => {
-    res.send('Servicio creado')
+    res.json({ respuesta: 'Creado con exito' })
   })
 })
 
