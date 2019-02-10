@@ -18,12 +18,6 @@ const Servicios_Personas = modulo.Servicios_Personas;
 const FotoServicios = modulo.FotoServicios;
 const Comentarios_Servicios = modulo.Comentarios_Servicios;
 
-app.get('/servicios', (req, res) => {
-  Servicios.findAll()
-    .then(servicios => {
-      res.json(servicios)
-    })
-})
 
 app.get('/personas', (req, res) => {
   Personas.findAll().then(personas => {
@@ -102,8 +96,6 @@ app.post('/personas/nuevo', (req, res) => {
         apellido: req.body.apellido,
         correo: req.body.correo,
         clave: req.body.clave,
-        provincia: req.body.provincia,
-        ciudad: req.body.ciudad,
         urlFoto: req.body.urlFoto
       }
     })
@@ -120,17 +112,49 @@ app.post('/personas/nuevo', (req, res) => {
     }); 
 }) 
 
-
-
-
-app.post('/servicio/nuevo', (req, res) => {
-  console.log(req.body)
+// Servicios
+app.post('/servicio/nuevo', (req, res) => { // Para poder crear un servicio
   Servicios.create({
     descripcionServicio: req.body.descripcionServicio
-  }).then(persona => {
+  })
+  .then(persona => {
     res.json({ respuesta: 'Servicio creado' })
   })
+  
 })
+
+app.get('/servicios', (req, res) => { // Para poder obtener todos los servicios
+  Servicios.findAll()
+    .then(servicios => {
+      res.json(servicios)
+    })
+})
+
+app.post('/servicios/nuevo', (req, res) => {
+  console.log(req.body);
+  Servicios_Personas.create({
+    correo: req.body.idPersona, 
+    idServicio: req.body.idServOfrece,
+    fotoServicio: req.body.fotoServicio,
+    latitud: req.body.latitud,
+    longitud: req.body.longitud,
+    ciudad: req.body.ciudad,
+    provincia: req.body.provincia,
+    descripcionServicio: req.body.descripcionServicio
+  })
+  .then(persona => {
+    res.json({ respuesta: 'Servicio del usuario creado' })})
+  .catch(function (err) { 
+    if (err.statusCode) { 
+      res.status(err.statusCode); 
+    } else { 
+      res.status(500); 
+    } 
+    res.json({'error': err.message}
+    );
+  })
+}); 
+
 
 app.post('/fotoservicio/nuevo', (req, res) => { //La direccion de las fotos van separadas por un punto y coma al ingresar 
   console.log(req.body)

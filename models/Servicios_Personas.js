@@ -1,7 +1,7 @@
 module.exports = (conexion, Sequelize) => {
-    const Servicios_Persona = conexion.define('Servicios_Persona', 
+    const Servicios_Personas = conexion.define('Servicios_Personas', 
     {
-        idPersona: 
+        correo: 
         {
             type: Sequelize.STRING,
             allowNull: false,
@@ -10,10 +10,10 @@ module.exports = (conexion, Sequelize) => {
             {
                 model: 'Personas',
                 key: 'correo',
-                as: 'idPersona'
+                as: 'correo'
             }
         },
-        idServOfrece: 
+        idServicio: 
         {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -22,16 +22,42 @@ module.exports = (conexion, Sequelize) => {
             {
                 model: 'Servicios',
                 key: 'idServicio',
-                as: 'idServOfrece'
+                as: 'idServicio'
             }
         },
-        calificacionGeneral: {//Mostrar la calificaion promedio en enteros del usuario
-            type: Sequelize.INTEGER,
+        fotoServicio: 
+        {// Mostrar la calificaion promedio en enteros del usuario
+            type: Sequelize.STRING,
             allowNull: false
+        },
+        latitud: 
+        {//Mostrar la calificaion promedio en enteros del usuario
+            type: Sequelize.DOUBLE,
+            allowNull: false
+        },
+        longitud: 
+        {//Mostrar la calificaion promedio en enteros del usuario
+            type: Sequelize.DOUBLE,
+            allowNull: false
+        },
+        provincia: 
+        {//Mostrar la calificaion promedio en enteros del usuario
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        ciudad: 
+        {//Mostrar la calificaion promedio en enteros del usuario
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        descripcionServicio: 
+        {//Mostrar la calificaion promedio en enteros del usuario
+            type: Sequelize.STRING,
+            allowNull: true
         }
     },
     {
         timestamps: false
     })
-    return Servicios_Persona
+    return Servicios_Personas
   }

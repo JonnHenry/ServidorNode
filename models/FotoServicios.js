@@ -1,7 +1,7 @@
 module.exports = (conexion, Sequelize) => {
     const FotoServicios = conexion.define('FotoServicios', 
     {
-        idPersona: 
+        correo: 
         {
             type: Sequelize.STRING,
             allowNull: false,
@@ -10,7 +10,7 @@ module.exports = (conexion, Sequelize) => {
             {
                 model: 'Personas',
                 key: 'correo',
-                as: 'idPersona'
+                as: 'correo'
             }
         },
         idServicio: 
