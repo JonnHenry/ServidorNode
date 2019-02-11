@@ -22,6 +22,8 @@ const Comentarios_Servicios = modulo.Comentarios_Servicios;
 app.get('/personas', (req, res) => {
   Personas.findAll().then(personas => {
     res.json(personas)
+  }).catch(function (err) { 
+    res.json({'error': err.message});
   })
 })
 
@@ -34,6 +36,8 @@ app.get('/personas/:correouser', (req, res) => {
     })
     .then(persona => {
       res.json(persona)
+    }).catch(function (err) { 
+      res.json({'error': err.message});
     })
 })
 
@@ -46,6 +50,8 @@ app.get('/personas/ciudad/:nombciudad', (req, res) => {
     })
     .then(persona => {
       res.json(persona)
+    }).catch(function (err) { 
+      res.json({'error': err.message});
     })
 })
 
@@ -57,6 +63,8 @@ app.get('/personas/provincia/:nombprov', (req, res) => {
     })
     .then(persona => {
       res.json(persona)
+    }).catch(function (err) { 
+      res.json({'error': err.message});
     })
 })
 
@@ -70,6 +78,8 @@ app.put('/personas/:id', (req, res) => {
         .then(nuevaPersona => {
           res.json(nuevaPersona);
         })
+    }).catch(function (err) { 
+      res.json({'error': err.message});
     })
 })
 
@@ -86,7 +96,10 @@ app.post('/login/persona', (req, res) => {
     })
     .then(persona => {
       res.json(persona);
+    }).catch(function (err) { 
+      res.json({'error': err.message});
     })
+
 })
 
 app.post('/personas/nuevo', (req, res) => {
@@ -116,10 +129,12 @@ app.post('/personas/nuevo', (req, res) => {
 app.post('/servicio/nuevo', (req, res) => { // Para poder crear un servicio
   Servicios.create({
     descripcionServicio: req.body.descripcionServicio
+  }).then(persona => {
+    res.json({ respuesta: 'Servicio creado' })}
+  ).catch(function (err) { 
+    res.json({ respuesta: err.message});
   })
-  .then(persona => {
-    res.json({ respuesta: 'Servicio creado' })
-  })
+
   
 })
 
@@ -145,16 +160,39 @@ app.post('/servicios/nuevo', (req, res) => {
   .then(persona => {
     res.json({ respuesta: 'Servicio del usuario creado' })})
   .catch(function (err) { 
-    if (err.statusCode) { 
-      res.status(err.statusCode); 
-    } else { 
-      res.status(500); 
-    } 
-    res.json({'error': err.message}
-    );
+    res.json({ respuesta: err.message});
   })
 }); 
 
+
+app.get('/obtenerservicios/:idServicio', (req, res) => { // Para poder obtener todos los servicios y el numero de resultados
+  console.log('Los datos que son:' + req.params.idServicio);
+  Servicios_Personas.findAndCountAll({
+    where : {
+      idServicio: req.params.idServicio
+    }
+  }).then(result => {
+      res.json({
+        'cantidadServicios' : result.count,
+        'resulBusqueda' : result.rows,
+        'errorBuscar': false
+      })
+      console.log(result.rows)
+    })
+    .catch((err) => { 
+      if (err.statusCode) { 
+        res.status(err.statusCode); 
+      } else { 
+        res.status(500); 
+      } 
+      res.json({
+        'cantidadServicios': 0, 
+        'resulBusqueda': err.message,
+        'errorBuscar': true
+      }
+      );
+    })
+})
 
 app.post('/fotoservicio/nuevo', (req, res) => { //La direccion de las fotos van separadas por un punto y coma al ingresar 
   console.log(req.body)
@@ -164,6 +202,8 @@ app.post('/fotoservicio/nuevo', (req, res) => { //La direccion de las fotos van 
     direccionFoto: req.body.direccionFoto
   }).then(persona => {
     res.json({ respuesta: 'Creado con exito' })
+  }).catch(function (err) { 
+    res.json({ respuesta: err.message});
   })
 })
 
