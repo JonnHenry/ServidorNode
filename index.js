@@ -145,7 +145,22 @@ app.get('/servicios', (req, res) => { // Para poder obtener todos los servicios
     })
 })
 
-app.post('/servicios/nuevo', (req, res) => {
+
+app.get('/servicio/busca/:id', (req, res) => {// Saber la descripcion de un servicio
+  console.log('El valor que esta llegando es :' + req.params.id);
+  Servicios.findOne({
+      where: {
+        idServicio: req.params.id
+      }
+    })
+    .then(servicio => {
+      res.json({ 'respuesta': servicio.descripcionServicio})
+    }).catch(function (err) { 
+      res.json({ 'respuesta': 'Error 500 - Internal server error'});
+    })
+})
+
+app.post('/servicios/nuevo', (req, res) => { //Para poder tener un crear un servico de personas
   console.log(req.body);
   Servicios_Personas.create({
     correo: req.body.idPersona, 
@@ -192,6 +207,20 @@ app.get('/obtenerservicios/:idServicio', (req, res) => { // Para poder obtener t
       }
       );
     })
+})
+
+app.post('/servicio/persona', (req, res) => { //buscar a una persona que ofrece servicio
+  console.log(req.body)
+  Servicios_Personas.findOne({
+      where: {
+        correo: req.body.correo,
+        idServicio: req.body.idServicio
+      }
+    })
+    .then(personaserv => {
+      res.json(personaserv);
+    })
+
 })
 
 app.post('/fotoservicio/nuevo', (req, res) => { //La direccion de las fotos van separadas por un punto y coma al ingresar 
